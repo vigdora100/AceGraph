@@ -7,6 +7,11 @@ import { connect } from 'react-redux'
 import updateGraph from './actions';
 import initialValue from './InitialValue.json'
 
+
+const Container = styled.div`
+
+`;
+
 class AceContainer extends React.Component {
 
     constructor(props, context) {

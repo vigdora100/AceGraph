@@ -1,11 +1,19 @@
 import React from "react";
 import { isEqual } from 'lodash'
+import styled from "styled-components";
+
+const GraphReplacer = styled.div`
+    border: 3px solid red;
+    width: 600px;
+    height: 600px;
+`;
 
 export default class GraphErrorBoundary extends React.Component {
     constructor(props) {
       super(props);
       this.state = { hasError: false };
     }
+
 
     componentDidUpdate(prevProps)  {
         if (!isEqual(this.props.graphJson,prevProps.graphJson)) {
@@ -21,8 +29,8 @@ export default class GraphErrorBoundary extends React.Component {
     render() {
       if ( this.state.hasError) {
         // You can render any custom fallback UI
-        return (<div><h1>Something went wrong.</h1>
-                <button onClick={this.reset}>Try again</button></div>
+        return (<GraphReplacer><h1>Error: Json is not in Cyto format</h1>
+                </GraphReplacer>
                 )
       }
       return this.props.children;
